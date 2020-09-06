@@ -80,6 +80,35 @@ class Refinement(nn.Module):
             out = layer(out)
         out = self.conv_out(out)
         return out
+    
+class MS_TCN(nn.Module):
+    def __init__(self, num_stages, num_layers, num_f_maps, dim, num_classes):
+        super(MS_TCB, self).__init__()
+        self.stage1 = SS_TCN(num_layers, num_f_maps, dim, num_classes)
+        self.stages = nn.ModuleList([copy.deepcopy(SS_TCN(num_layers, num_f_maps, num_classes, num_classes)) for s in range(num_stages-1)])
+
+    def forward(self, x, mask):
+        out = self.stage1(x, mask)
+        outputs = out.unsqueeze(0)
+        for s in self.stages:
+            out = s(F.softmax(out, dim=1) * mask[:, 0:1, :], mask)
+            outputs = torch.cat((outputs, out.unsqueeze(0)), dim=0)
+        return outputs
+
+
+class SS_TCN(nn.Module):
+    def __init__(self, num_layers, num_f_maps, dim, num_classes):
+        super(SS_TCN, self).__init__()
+        self.conv_1x1 = nn.Conv1d(dim, num_f_maps, 1)
+        self.layers = nn.ModuleList([copy.deepcopy(DilatedResidualLayer(2 ** i, num_f_maps, num_f_maps)) for i in range(num_layers)])
+        self.conv_out = nn.Conv1d(num_f_maps, num_classes, 1)
+
+    def forward(self, x, mask):
+        out = self.conv_1x1(x)
+        for layer in self.layers:
+            out = layer(out, mask)
+        out = self.conv_out(out) * mask[:, 0:1, :]
+        return out
 
 
 class DilatedResidualLayer(nn.Module):
