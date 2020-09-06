@@ -1,4 +1,4 @@
-# MS-TCN++: MS-TCN++: Multi-Stage Temporal Convolutional Network for Action Segmentation (TPAMI 2020)
+# MS-TCN++: Multi-Stage Temporal Convolutional Network for Action Segmentation (TPAMI 2020)
 
 This repository provides a PyTorch implementation of the paper [MS-TCN++: Multi-Stage Temporal Convolutional Network for Action Segmentation](https://arxiv.org/pdf/2006.09220.pdf).
 
