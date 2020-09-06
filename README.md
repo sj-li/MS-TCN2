@@ -1,4 +1,4 @@
-# MS-TCN2
+# MS-TCN++: MS-TCN++: Multi-Stage Temporal Convolutional Network for Action Segmentation (TPAMI 2020)
 
 ## Environment
 Python3
@@ -11,3 +11,13 @@ To train the model run sh train.sh ${dataset} ${split} where ${dataset} is break
 ## Evaluation
 Run sh test_epoch.sh ${dataset} ${split} ${test_epoch}.
 
+
+## Cite:
+```BibTeX
+@article{li2020ms,
+  title={MS-TCN++: Multi-Stage Temporal Convolutional Network for Action Segmentation},
+  author={Li, Shijie and Farha, Yazan Abu and Liu, Yun and Cheng, Ming-Ming and Gall, Juergen},
+  journal={arXiv preprint arXiv:2006.09220},
+  year={2020}
+}
+```
