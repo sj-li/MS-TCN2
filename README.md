@@ -17,10 +17,14 @@ Run sh test_epoch.sh ${dataset} ${split} ${test_epoch}.
 ## Cite:
 ```BibTeX
 @article{li2020ms,
-  title={MS-TCN++: Multi-Stage Temporal Convolutional Network for Action Segmentation},
-  author={Li, Shijie and Farha, Yazan Abu and Liu, Yun and Cheng, Ming-Ming and Gall, Juergen},
-  journal={arXiv preprint arXiv:2006.09220},
-  year={2020}
+   author={Shi-Jie Li and Yazan AbuFarha and Yun Liu and Ming-Ming Cheng and Juergen Gall},
+    journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+    title={MS-TCN++: Multi-Stage Temporal Convolutional Network for Action Segmentation}, 
+    year={2020},
+    volume={},
+    number={},
+    pages={1-1},
+    doi={10.1109/TPAMI.2020.3021756},
 }
 
 @inproceedings{farha2019ms,
