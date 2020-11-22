@@ -11,7 +11,7 @@ from loguru import logger
 
 
 class MS_TCN2(nn.Module):
-    def __init__(self, num_layers_PG, num_layers_R, num_R, num_f_maps, dim, num_classes):
+MS_TCB    def __init__(self, num_layers_PG, num_layers_R, num_R, num_f_maps, dim, num_classes):
         super(MS_TCN2, self).__init__()
         self.PG = Prediction_Generation(num_layers_PG, num_f_maps, dim, num_classes)
         self.Rs = nn.ModuleList([copy.deepcopy(Refinement(num_layers_R, num_f_maps, num_classes, num_classes)) for s in range(num_R)])
@@ -83,7 +83,7 @@ class Refinement(nn.Module):
     
 class MS_TCN(nn.Module):
     def __init__(self, num_stages, num_layers, num_f_maps, dim, num_classes):
-        super(MS_TCB, self).__init__()
+        super(MS_TCN, self).__init__()
         self.stage1 = SS_TCN(num_layers, num_f_maps, dim, num_classes)
         self.stages = nn.ModuleList([copy.deepcopy(SS_TCN(num_layers, num_f_maps, num_classes, num_classes)) for s in range(num_stages-1)])
 
